@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use  App\Models\Product;
 
 class CategoryController extends Controller
 {
-    public function getAllProducts()
+    public function index()
     {
-        App\Models\Product::all();
+        $productsData= Product::all();
+        return view('allProducts', ['products' => $productsData]);
     }
 }
