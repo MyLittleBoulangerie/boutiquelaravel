@@ -17,4 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/category', [CategoryController::class, 'index']);
+Route::post('/category', [CategoryController::class, 'show']); //à terme, appellera cartController
+
 

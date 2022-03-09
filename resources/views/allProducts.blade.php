@@ -402,6 +402,12 @@
 <body class="antialiased">
 <header>
     <h1>Bienvenue chez My Little Boulangerie</h1>
+    <div>Mon panier: {{'infos de session: id et quantity de chaque produit'}}
+        <ul>
+            <li>{{'id - quantity'}}</li>
+            <li>{{'id - quantity'}}</li>
+        </ul>
+    </div>
 </header>
 <main>
     <h2>Tous nos produits:</h2>
@@ -415,10 +421,17 @@
             <img src="ressources/photos/{{$product->name}}.jpg" alt="Photo de {{$product->name}}">
             <h3>{{$product->name}}</h3>
             <p>{{$product->description}}</p>
-            <button> Ajouter au panier</button>
-            <br/>
+            <label for="quantity">quantité:</label>
+            <form action="/category" method="POST">
+                @csrf
+                <input type="hidden" name="id" value="{{$product->id}}">
+                <input type="number" placeholder="0" name="quantity"
+                       min="1" max="{{$product->stock}}">
+                <div>stock disponible: {{$product->stock}}</div>
+                <button type="submit"> Ajouter au panier</button>
+                <br/>
+            </form>
         </div>
-
     @endforeach
 </main>
 <footer></footer>
