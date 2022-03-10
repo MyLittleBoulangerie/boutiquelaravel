@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Psy\Util\Str;
 use Ramsey\Uuid\Type\Decimal;
 use Ramsey\Uuid\Type\Integer;
+use App\Models\Product;
 
 class ProductSeeder extends Seeder
 {
@@ -18,11 +19,6 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
-            'name'=>'Pain aux céréales',
-            'description'=>'Pain croustillant aux graines de gourge et de lin',
-            'price'=> 1.95,
-            'stock'=>100,
-    ]);
+        Product::factory(10)->create();
     }
 }

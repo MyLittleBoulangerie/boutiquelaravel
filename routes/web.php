@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,5 +16,7 @@ use App\Http\Controllers\CategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/category', [CategoryController::class, 'getAllProducts']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::post('/products', [ProductController::class, 'show']); //à terme, appellera cartController
+
 

@@ -9,7 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    public function hasCategory(){
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
         return $this->belongsTo(Category::class);
     }
 }
