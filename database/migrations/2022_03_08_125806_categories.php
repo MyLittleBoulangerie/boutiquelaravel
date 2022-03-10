@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->char('name', 45);
             $table->mediumText('description');
+            $table->string('slug')->nullable();
         });
     }
 
