@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->decimal('price', 4,2);
+            $table->float('price', 5,2);
             $table->integer('stock');
+            $table->foreignId('category_id');
+            $table->timestamps();
         });
     }
 
