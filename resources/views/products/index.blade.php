@@ -31,10 +31,10 @@
             <h3>{{$product->name}}</h3>
             <p>{{$product->description}}</p>
             <label for="quantity">quantité:</label>
-            <form action="/products" method="POST">
+            <form action="{{route('addcart')}}" method="POST">
                 @csrf
-                <input type="hidden" name="id" value="{{$product->id}}">
-                <input type="number" placeholder="1" name="quantity"
+                <input type="hidden" name="product_id" value="{{$product->id}}">
+                <input type="number" value="1" name="quantity"
                        min="1" max="{{$product->stock}}">
                 <div>stock disponible: {{$product->stock}}</div>
                 <button type="submit"> Ajouter au panier</button>

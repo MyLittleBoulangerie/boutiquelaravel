@@ -31,33 +31,46 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $id = $request->input('id');
-        $quantity = $request->input('quantity');
+        $product_id = $request->input('product_id');
+        (int)$quantity = $request->input('quantity');
 
-        $request->session()->put($id, $quantity);
+        // $cart = $_SESSION['cart']
+        $cart = $request->session()->get('cart', []);
+
+        // Debut logique d'ajout
+
+        if (array_key_exists($product_id, $cart)) {
+            $cart[$product_id] += $quantity;
+        } else {
+            $cart[$product_id] = $quantity;
+        }
+
+        // Fin
+        $request->session()->put('cart', $cart);
+
+        return redirect()->route('home');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
     {
         self::store($request);
-        dd($request->session()->all());
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -68,8 +81,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -80,7 +93,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
