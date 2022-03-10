@@ -1,14 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Test view</h1>
-</body>
-</html>
-<?php
-App\Models\Category::all();
+@extends('Layouts.template')
+@section('content')
+    <div class="container-fluid text-center">
+        <div class="row">
+            @foreach($home as $categorie)
+                <div class="col-md-6">
+                    <img class="img-fluid d-lg-flex" src="resources/bootstrap/images/test.png">
+                </div>
+                <div class="col-md-6">
+                    <h1> {{$categorie->name}} </h1>
+                    <p> {{$categorie->description}} </p>
+                    <button class="btn btn-primary" type="button">Button</button>
+                </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
+@section('formulaire')
+    <p>blablabla</p>
+@endsection

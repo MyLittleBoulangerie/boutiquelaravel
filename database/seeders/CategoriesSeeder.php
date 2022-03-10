@@ -17,20 +17,7 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\Category::factory(3)->create();
 
-        DB::table('categories')->insert([
-            'name' => 'Boulangeries',
-            'description' => 'Dans cette catégorie vous trouverez toutes nos pains.',
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Pâtisseries',
-            'description' => 'Dans cette catégorie vous trouverez toutes nos pâtisseries.',
-        ]);
-
-        DB::table('categories')->insert([
-            'name' => 'Viennoiseries',
-            'description' => 'Dans cette catégorie vous trouverez toutes nos viennoiseries.',
-        ]);
     }
 }
