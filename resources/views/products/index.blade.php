@@ -31,7 +31,7 @@
             <h3>{{$product->name}}</h3>
             <p>{{$product->description}}</p>
             <label for="quantity">quantité:</label>
-            <form action="/category" method="POST">
+            <form action="/products" method="POST">
                 @csrf
                 <input type="hidden" name="id" value="{{$product->id}}">
                 <input type="number" placeholder="1" name="quantity"
