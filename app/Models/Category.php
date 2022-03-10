@@ -11,6 +11,7 @@ use JetBrains\PhpStorm\ArrayShape;
 class Category extends Model
 {
     use HasFactory;
+
     use Sluggable;
     use SluggableScopeHelpers;
 
@@ -28,4 +29,11 @@ class Category extends Model
                 'source' => 'name'
             ]
         ];
-    }}
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::Class);
+    }
+}
+
