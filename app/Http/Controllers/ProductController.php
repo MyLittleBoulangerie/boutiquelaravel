@@ -27,7 +27,8 @@ class ProductController extends Controller
     }
 
     public function productDetail(){
-        $product= Product::find('1');
+        $productId=Request('id');
+        $product= Product::find($productId);
         return view('products.product', ['product'=>$product]);
     }
 

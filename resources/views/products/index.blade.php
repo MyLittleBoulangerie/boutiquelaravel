@@ -19,7 +19,7 @@
                 <input type="number" value="1" name="quantity"
                        min="1" max="{{$product->stock}}">
                 <div>stock disponible: {{$product->stock}}</div>
-                <a  href="{{route('product')}}">Voir le produit</a>
+                <a  href="{{route('product', $product->id)}}">Voir le produit</a>
                 <button type="submit"> Ajouter au panier</button>
                 <br/>
             </form>
