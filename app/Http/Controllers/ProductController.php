@@ -20,8 +20,9 @@ class ProductController extends Controller
         return view('products.index', ['products' => $products]);
     }
 
-    public function productsByCategory(Category $category, Product $products){
-        $products= Product::all()->where('category_id', '1' );
+    public function productsByCategory(Request $request, Product $products){
+        $categoryId= Request('id');
+        $products= Product::all()->where('category_id', $categoryId );
         return view('products.index', ['products'=>$products]);
     }
 

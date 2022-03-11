@@ -18,5 +18,5 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [HomeController::class , 'index'])->name('home');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products');
-Route::get('/products/category/pain', [ProductController::class, 'productsByCategory'])->name('pain');
+Route::get('/products/category/{id}', [ProductController::class, 'productsByCategory'])->name('category');
 Route::post('/products', [ProductController::class, 'store'])->name('addcart'); //à terme, appellera cartController
