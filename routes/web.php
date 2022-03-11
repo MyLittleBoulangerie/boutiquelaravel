@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -18,4 +19,4 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [HomeController::class , 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'show']); //à terme, appellera cartController
-Route::get('/validate_order', [\App\Http\Controllers\ValidateOrderController::class, 'index']);
+Route::get('/validate_order', [OrderController::class, 'index']);
