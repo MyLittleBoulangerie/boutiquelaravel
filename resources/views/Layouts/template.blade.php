@@ -40,7 +40,7 @@ Panier
 <body>
 
 @yield('content')
-@yield('formulaire')
+@yield('validate_order')
 
 </body>
 
