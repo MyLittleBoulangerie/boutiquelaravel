@@ -20,10 +20,15 @@ class ProductController extends Controller
         return view('products.index', ['products' => $products]);
     }
 
-    public function productsByCategory(Request $request, Product $products){
+    public function productsByCategory(){
         $categoryId= Request('id');
         $products= Product::all()->where('category_id', $categoryId );
         return view('products.index', ['products'=>$products]);
+    }
+
+    public function productDetail(){
+        $product= Product::find('1');
+        return view('products.product', ['product'=>$product]);
     }
 
     /**
