@@ -37,12 +37,23 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $id = $request->input('id');
-        $quantity = $request->input('quantity');
-        $cart=$request->session()->get('cart', []);
-        $request->session()->put('cart', [$id => $quantity]);
-        dd($cart);
 
+        $product_id = $request->input('product_id');
+        (int)$quantity = $request->input('quantity');
+
+        // $cart = $_SESSION['cart']
+        $cart = $request->session()->get('cart', []);
+
+        // Debut logique d'ajout
+        if (array_key_exists($product_id, $cart)) {
+            $cart[$product_id] += $quantity;
+        } else {
+            $cart[$product_id] = $quantity;
+        }
+
+        // Fin
+        $request->session()->put('cart', $cart);
+        return redirect()->route('home');
 
     }
 
@@ -55,7 +66,6 @@ class ProductController extends Controller
     public function show(Request $request)
     {
         self::store($request);
-
     }
 
     /**
