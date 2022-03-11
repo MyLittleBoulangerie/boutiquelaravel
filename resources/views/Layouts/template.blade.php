@@ -16,10 +16,10 @@
         <div class="container">
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item text-center"><a class="nav-link active" href="{{route('products')}}">Nos
+                    <li class="nav-item text-center"><a class="nav-link active" href="{{route('pain')}}">Nos
                             Pains</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('products')}}">Nos Viennoiseries</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{route('products')}}">Nos Patisseries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('pain')}}">Nos Viennoiseries</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('pain')}}">Nos Patisseries</a></li>
                 </ul>
 
                 <img class="img-fluid mx-auto">

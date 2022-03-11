@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -17,6 +18,11 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('products.index', ['products' => $products]);
+    }
+
+    public function productsByCategory(Category $category, Product $products){
+        $products= Product::all()->where('category_id', '1' );
+        return view('products.index', ['products'=>$products]);
     }
 
     /**
