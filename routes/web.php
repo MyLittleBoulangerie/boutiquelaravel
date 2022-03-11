@@ -18,3 +18,4 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [HomeController::class , 'index']);
 Route::get('/products', [ProductController::class, 'index']);
 Route::post('/products', [ProductController::class, 'show']); //à terme, appellera cartController
+Route::get('/validate_order', [\App\Http\Controllers\ValidateOrderController::class, 'index']);
