@@ -1,24 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-
-</head>
-<body class="antialiased">
-<header>
-    <h1>Bienvenue chez My Little Boulangerie</h1>
-    <div>Mon panier: {{'infos de session: id et quantity de chaque produit'}}
-        <ul>
-            <li>{{'id - quantity'}}</li>
-            <li>{{'id - quantity'}}</li>
-        </ul>
-    </div>
-</header>
-<main>
+@extends('Layouts.template')
+@section('content')
     <h2>Tous nos produits:</h2>
     <h3>Disponible uniquement en magasin et Click & Collect</h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -30,6 +11,7 @@
             <img src="ressources/photos/{{$product->name}}.jpg" alt="Photo de {{$product->name}}">
             <h3>{{$product->name}}</h3>
             <p>{{$product->description}}</p>
+            <p>prix: {{$product->price}}€</p>
             <label for="quantity">quantité:</label>
             <form action="{{route('addcart')}}" method="POST">
                 @csrf
@@ -42,7 +24,5 @@
             </form>
         </div>
     @endforeach
-</main>
-<footer></footer>
-</body>
-</html>
+@endsection
+

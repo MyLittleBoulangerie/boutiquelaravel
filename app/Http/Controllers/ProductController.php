@@ -65,7 +65,7 @@ class ProductController extends Controller
      */
     public function show(Request $request)
     {
-        self::store($request);
+        //
     }
 
     /**

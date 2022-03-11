@@ -15,6 +15,3 @@
         </div>
     </div>
 @endsection
-@section('formulaire')
-    <p>blablabla</p>
-@endsection
