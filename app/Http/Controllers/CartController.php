@@ -60,7 +60,9 @@ class CartController extends Controller
 
 
         $cart = [];
-
+        if(!isset($productInCart)):
+         echo "Le Panier est vide";
+        else :
         foreach ($cartSession as $id => $quantity) {
             $item = Product::find($id);
             $product=['item'=>$item, 'quantity'=>$quantity];
@@ -69,7 +71,7 @@ class CartController extends Controller
         }
         //dd($cart);
         return view('cart.index', ['productInCart' => $cart]);
-
+        endif;
     }
 
 

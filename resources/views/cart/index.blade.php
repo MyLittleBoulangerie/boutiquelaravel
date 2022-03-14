@@ -2,6 +2,7 @@
 @section('content')
     <h2>Votre panier:</h2>
 
+
     @foreach($productInCart as $product)
         <ul>
            <li><img src="ressources/photos/{{$product['item']['name']}}.jpg" alt="Photo de {{$product['item']['name']}}">
@@ -12,4 +13,5 @@
             </li>
         </ul>
     @endforeach
+
 @endsection
