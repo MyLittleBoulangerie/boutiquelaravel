@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +14,15 @@ use App\Http\Controllers\ProductController;
 |
 */
 
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
 Route::get('/', [HomeController::class , 'index'])->name('home');
 Route::get('/products', [ProductController::class, 'index'])->name('products');
 Route::post('/products', [ProductController::class, 'store'])->name('addcart'); //à terme, appellera cartController
+
+require __DIR__.'/auth.php';
