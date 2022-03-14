@@ -32,7 +32,7 @@
                 </ul>
                 <button class="btn btn-outline-dark" role="button" href="#">
                     <i class="bi-cart-fill me-1"></i>
-                    <a class="nav-link" href="#">Panier</a>
+                    <a class="nav-link" href="{{route('cart')}}">Panier</a>
 
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
