@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>My Little Boulangerie</title>
+    <meta name="description" content="{{'Ici, on mettra une metadesc dynamique'}}">
+    <title>{{'Ici, on mettra un metaTitle dynamique'}}</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -31,7 +32,8 @@
                 </ul>
                 <button class="btn btn-outline-dark" role="button" href="#">
                     <i class="bi-cart-fill me-1"></i>
-                    Panier
+                    <a class="nav-link" href="#">Panier</a>
+
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
             </div>
