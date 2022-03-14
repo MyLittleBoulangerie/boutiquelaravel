@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -19,6 +20,14 @@ class ProductController extends Controller
         return view('products.index', ['products' => $products]);
     }
 
+    public function categoryIndex()
+    {
+        $categoryId = Request('id');
+        $products = Product::all()->where('category_id', $categoryId);
+        return view('products.index', ['products' => $products]);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,33 +38,6 @@ class ProductController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-
-        $product_id = $request->input('product_id');
-        (int)$quantity = $request->input('quantity');
-
-        // $cart = $_SESSION['cart']
-        $cart = $request->session()->get('cart', []);
-
-        // Debut logique d'ajout
-        if (array_key_exists($product_id, $cart)) {
-            $cart[$product_id] += $quantity;
-        } else {
-            $cart[$product_id] = $quantity;
-        }
-
-        // Fin
-        $request->session()->put('cart', $cart);
-        return redirect()->route('home');
-
-    }
 
     /**
      * Display the specified resource.
@@ -65,7 +47,9 @@ class ProductController extends Controller
      */
     public function show(Request $request)
     {
-        //
+        $productId = Request('id');
+        $product = Product::find($productId);
+        return view('products.product', ['product' => $product]);
     }
 
     /**
