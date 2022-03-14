@@ -28,49 +28,39 @@ class CartController extends Controller
 
         // Fin
         $request->session()->put('cart', $cart);
-        return redirect()->route('home');
-
+        return redirect()->back();
     }
 
     public function index()
     {
-        $firstItem = [
-            'name' => 'blabla',
-            'description' => 'blablablablablablablabla',
-            'quantity' => '10',
-            'price' => '50'];
-        $secondItem = [
-            'name' => 'blabla',
-            'description' => 'blablablablablablablabla',
-            'quantity' => '10',
-            'price' => '50'];
-        $anotherItem = [
-            'name' => 'blabla',
-            'description' => 'blablablablablablablabla',
-            'quantity' => '10',
-            'price' => '50'];
-
-        /* $cart = [
-             $firstItem,
-             $secondItem,
-             $anotherItem
-         ];*/
-
         $cartSession = Session::get('cart');
-
 
         $cart = [];
 
         foreach ($cartSession as $id => $quantity) {
             $item = Product::find($id);
-            $product=['item'=>$item, 'quantity'=>$quantity];
+            $product = ['item' => $item, 'quantity' => $quantity];
             array_push($cart, $product);
-            //dd($cart);
+
         }
-        //dd($cart);
+
         return view('cart.index', ['productInCart' => $cart]);
 
     }
 
+    public function remove(Request $request)
+    {
+
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product removed successfully');
+            return redirect()->back();
+
+        }
+    }
 
 }

@@ -11,5 +11,13 @@
                 <p>quantité: {{$product['quantity']}}</p>
             </li>
         </ul>
+        <form action="{{route('addcart')}}" method="POST">
+            @csrf
+            <button type="submit">Supprimer</button>
+            <br/>
+        </form>
+        <button>
+
+        </button>
     @endforeach
 @endsection

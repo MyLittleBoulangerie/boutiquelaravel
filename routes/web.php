@@ -25,7 +25,8 @@ Route::get('/dashboard', function () {
 Route::get('/', [HomeController::class , 'index'])->name('home');
 Route::get('/products/category/{id}', [ProductController::class, 'categoryIndex'])->name('category');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
-Route::post('/products', [CartController::class, 'store'])->name('addcart'); //à terme, appellera cartController
+Route::post('/products', [CartController::class, 'store'])->name('addcart');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart', [CartController::class, 'remove'])->name('delete');
 
 require __DIR__.'/auth.php';
