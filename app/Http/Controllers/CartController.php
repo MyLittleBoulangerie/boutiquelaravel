@@ -34,41 +34,22 @@ class CartController extends Controller
 
     public function index()
     {
-        $firstItem = [
-            'name' => 'blabla',
-            'description' => 'blablablablablablablabla',
-            'quantity' => '10',
-            'price' => '50'];
-        $secondItem = [
-            'name' => 'blabla',
-            'description' => 'blablablablablablablabla',
-            'quantity' => '10',
-            'price' => '50'];
-        $anotherItem = [
-            'name' => 'blabla',
-            'description' => 'blablablablablablablabla',
-            'quantity' => '10',
-            'price' => '50'];
-
-        /* $cart = [
-             $firstItem,
-             $secondItem,
-             $anotherItem
-         ];*/
-
         $cartSession = Session::get('cart');
 
 
         $cart = [];
-
-        foreach ($cartSession as $id => $quantity) {
-            $item = Product::find($id);
-            $product=['item'=>$item, 'quantity'=>$quantity];
-            array_push($cart, $product);
-            //dd($cart);
+        if (isset($cartSession)) {
+            foreach ($cartSession as $id => $quantity) {
+                $item = Product::find($id);
+                $product = ['item' => $item, 'quantity' => $quantity];
+                array_push($cart, $product);
+            }
         }
-        //dd($cart);
         return view('cart.index', ['productInCart' => $cart]);
+
+
+        //dd($cart);
+
 
     }
 
