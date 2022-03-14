@@ -1,4 +1,15 @@
 @extends('Layouts.template')
+
+<!-- For the dynamic meta tags -->
+@section('metaDescription')
+    {{$category->description}}
+@endsection
+@section('metaTitle')
+    MLB - Nos {{$category->name}}
+@endsection
+
+<!-- For the content itself -->
+
 @section('content')
     <h2>Tous nos produits:</h2>
     <h3>Disponible uniquement en magasin et Click & Collect</h3>
