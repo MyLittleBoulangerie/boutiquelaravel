@@ -16,11 +16,16 @@ use App\Http\Controllers\CartController;
 |
 */
 
-Route::get('/', [HomeController::class , 'index'])->name('home');
 
-Route::get('/products', [ProductController::class, 'index'])->name('products');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('/', [HomeController::class , 'index'])->name('home');
 Route::get('/products/category/{id}', [ProductController::class, 'categoryIndex'])->name('category');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
-
 Route::post('/products', [CartController::class, 'store'])->name('addcart'); //à terme, appellera cartController
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+require __DIR__.'/auth.php';
