@@ -17,5 +17,5 @@
             </li>
         </ul>
     @endforeach
-
+    @endif
 @endsection
