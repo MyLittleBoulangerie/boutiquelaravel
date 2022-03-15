@@ -27,8 +27,8 @@
 
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Ma Boulangerie</a></li>
-                    <li class="nav-item"><a class="btn btn-light action-button" role="button" href="#">Sign Up</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact </a></li>
+                    <li class="nav-item"><a class="btn btn-light action-button" role="button" href="{{route('dashboard')}}">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign up </a></li>
                 </ul>
                 <button class="btn btn-outline-dark" role="button" href="#">
                     <i class="bi-cart-fill me-1"></i>
