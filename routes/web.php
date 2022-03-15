@@ -28,4 +28,5 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('product'
 Route::post('/products', [CartController::class, 'store'])->name('addcart'); //à terme, appellera cartController
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 
+
 require __DIR__.'/auth.php';
