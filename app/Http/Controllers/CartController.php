@@ -68,11 +68,12 @@ class CartController extends Controller
     }
 
     // supprimer un article du panier
-    public function remove($id)
+    public function remove(Request $request)
     {
-        $product = Session::get('cart'[$id]);
-        var_dump($product);
-        Session::remove(['cart'][$id]);
-
+        $id=$request->input('id');
+        $cart=$request->session()->get('cart');
+        unset($cart[$id]);
+        $request->session()->put('cart', $cart);
+        return redirect()->back();
     }
 }
