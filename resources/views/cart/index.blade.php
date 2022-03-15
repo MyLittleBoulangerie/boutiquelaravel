@@ -30,8 +30,11 @@
                         <button type="submit">Modifier</button>
                     </form>
 
-                    <form action="{{route('removeFromCart')}}" method="delete">
-                        <button type="submit" value="{{$product['item']['id']}}">Supprimer</button>
+                    <form action="{{route('delete')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="id" value="{{$product['item']['id']}}">
+                        <button type="submit" >Supprimer</button>
+                        <br/>
                     </form>
                 </li>
             </ul>
