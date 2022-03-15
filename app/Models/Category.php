@@ -12,7 +12,6 @@ class Category extends Model
 {
     use HasFactory;
 
-<<<<<<< HEAD
     use Sluggable;
     use SluggableScopeHelpers;
 
@@ -42,12 +41,7 @@ class Category extends Model
         ];
     }
 
-    public function products()
-=======
-    public $timestamps = false;
-
     public function hasProducts()
->>>>>>> 75cbcf8 (fix IDE Helper)
     {
         return $this->hasMany(Product::Class);
     }

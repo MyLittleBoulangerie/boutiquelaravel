@@ -28,5 +28,7 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('product'
 Route::post('/products', [CartController::class, 'store'])->name('addcart');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'remove'])->name('delete');
+Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
+
 
 require __DIR__.'/auth.php';

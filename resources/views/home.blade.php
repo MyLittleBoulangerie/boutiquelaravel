@@ -1,5 +1,15 @@
 @extends('Layouts.template')
 @section('content')
+
+    <!-- For the dynamic meta tags -->
+@section('metaDescription')
+    'Bienvenue chez My Little Boulangerie, de savoureux pains, viennoiseries et pâtisseries, à acheter sur place ou à commander en click & collect!'
+@endsection
+@section('metaTitle')
+    'My Little Boulangerie : accueil'
+@endsection
+
+<!-- For the content itself -->
     <div class="container-fluid text-center">
         <div class="row">
             @foreach($home as $categorie)
