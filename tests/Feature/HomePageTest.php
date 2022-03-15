@@ -66,15 +66,15 @@ class HomePageTest extends TestCase
         //seed the database
         $this->seed(ProductSeeder::class);
 
-        //quering 
-        $response = $this->get('/');
-        
+        //quering
+        $response = $this->get('/products');
+
         //get the expecting products
         $products = Product::all();// TODO : verifier le trie / nombre des produits
 
         // check data passing to the view
         $response->assertViewHas('products',$products);
-        
+
 
     }
 
@@ -89,13 +89,13 @@ class HomePageTest extends TestCase
         //seed the database
         $this->seed(ProductSeeder::class);
 
-        //quering 
-        $response = $this->get('/');
-        
+        //quering
+        $response = $this->get('/products');
+
         //get the expecting products
         $products = Product::all();// TODO : verifier le trie / nombre des produits
-        
-        //check the parsed view 
+
+        //check the parsed view
         $response->assertSee($products->first()->name);
     }
 }
