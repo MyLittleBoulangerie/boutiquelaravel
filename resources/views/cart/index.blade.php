@@ -1,7 +1,6 @@
 @extends('Layouts.template')
 @section('content')
     <h2>Votre panier:</h2>
-
     @foreach($productInCart as $product)
         <ul>
            <li><img src="ressources/photos/{{$product['item']['name']}}.jpg" alt="Photo de {{$product['item']['name']}}">
@@ -9,15 +8,13 @@
                 <p>{{$product['item']['description']}}</p>
                 <p>prix: {{$product['item']['price']}}€</p>
                 <p>quantité: {{$product['quantity']}}</p>
-            </li>
+           </li>
         </ul>
-        <form action="{{route('addcart')}}" method="POST">
+        <form action="{{route('delete')}}" method="POST">
             @csrf
-            <button type="submit">Supprimer</button>
+            <input type="hidden" name="id" value="{{$product['item']['id']}}">
+            <button type="submit" >Supprimer</button>
             <br/>
         </form>
-        <button>
-
-        </button>
     @endforeach
 @endsection
