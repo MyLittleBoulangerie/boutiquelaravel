@@ -26,7 +26,7 @@
                         @csrf
                         <label>quantité:</label>
                         <input type="hidden" name="product_id" value="{{$product['item']['id']}}">
-                        <input type="number" name="quantity" value="{{$product['quantity']}}">
+                        <input type="number" min="1" max="{{$product['item']['stock']}}" name="quantity" value="{{$product['quantity']}}">
                         <button type="submit">Modifier</button>
                     </form>
 
