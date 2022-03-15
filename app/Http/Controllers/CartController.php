@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 class CartController extends Controller
 
 {
+    // Placer des produits en session
     public function store(Request $request)
     {
 
@@ -28,10 +29,27 @@ class CartController extends Controller
 
         // Fin
         $request->session()->put('cart', $cart);
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
 
+    // Modifier la quantité d'un produit depuis le panier
+    public function updatecart(Request $request)
+    {
+
+        $product_id = $request->input('product_id');
+        (int)$quantity = $request->input('quantity');
+
+        $cart = $request->session()->get('cart', []);
+
+        $cart[$product_id] = $quantity;
+
+        $request->session()->put('cart', $cart);
+        return redirect()->route('cart');
+
+    }
+
+    // Afficher tous les articles du panier
     public function index()
     {
         $cartSession = Session::get('cart');
@@ -46,12 +64,15 @@ class CartController extends Controller
             }
         }
         return view('cart.index', ['productInCart' => $cart]);
-
-
         //dd($cart);
-
-
     }
 
+    // supprimer un article du panier
+    public function remove($id)
+    {
+        $product = Session::get('cart'[$id]);
+        var_dump($product);
+        Session::remove(['cart'][$id]);
 
+    }
 }
