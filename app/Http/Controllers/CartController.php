@@ -57,21 +57,24 @@ class CartController extends Controller
 
         $cart = [];
         if (isset($cartSession)) {
+            (int)$totalPrice = 0;
             foreach ($cartSession as $id => $quantity) {
                 $item = Product::find($id);
                 $product = ['item' => $item, 'quantity' => $quantity];
+                $totalPrice += $item['price']*$quantity;
                 array_push($cart, $product);
             }
+
         }
-        return view('cart.index', ['productInCart' => $cart]);
+        return view('cart.index', ['productInCart' => $cart, 'totalPrice'=>$totalPrice]);
         //dd($cart);
     }
 
     // supprimer un article du panier
     public function remove(Request $request)
     {
-        $id=$request->input('id');
-        $cart=$request->session()->get('cart');
+        $id = $request->input('id');
+        $cart = $request->session()->get('cart');
         unset($cart[$id]);
         $request->session()->put('cart', $cart);
         return redirect()->back();

@@ -21,7 +21,8 @@
                          alt="Photo de {{$product['item']['name']}}">
                     <h3>{{$product['item']['name']}}</h3>
                     <p>{{$product['item']['description']}}</p>
-                    <p>prix: {{$product['item']['price']}}€</p>
+                    <p>prix unitaire: {{$product['item']['price']}}€</p>
+                    <p>prix: {{$product['item']['price']*$product['quantity']}}€</p>
                     <form action="{{route('updatecart')}}" method="POST">
                         @csrf
                         <label>quantité:</label>
@@ -39,7 +40,7 @@
                 </li>
             </ul>
         @endforeach
-        <h4>Prix total: XXXX</h4>
+        <h4>Prix total: {{$totalPrice}}</h4>
     @endif
 
 @endsection
