@@ -23,6 +23,14 @@
                 <p>{{$product['item']['description']}}</p>
                 <p>prix: {{$product['item']['price']}}€</p>
                 <p>quantité: {{$product['quantity']}}</p>
+                <div class="button-container" style="display: flex">
+                <form action="{{route('product',$product['item']['id'] )}}" method="get">
+                <button type="submit" value="{{$product['item']['id']}}">Modifier</button>
+                </form>
+                <form action="" method="post">
+                <button type="submit" value="{{$product['item']['id']}}">Supprimer</button>
+                </form>
+                </div>
             </li>
         </ul>
     @endforeach
