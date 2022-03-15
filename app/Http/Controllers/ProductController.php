@@ -23,8 +23,10 @@ class ProductController extends Controller
     public function categoryIndex()
     {
         $categoryId = Request('id');
+        $categoryData = Category::find($categoryId);
         $products = Product::all()->where('category_id', $categoryId);
-        return view('products.index', ['products' => $products]);
+
+        return view('products.index', ['products' => $products, 'category' => $categoryData]);
     }
 
 

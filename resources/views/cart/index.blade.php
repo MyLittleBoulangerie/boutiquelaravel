@@ -1,5 +1,16 @@
 @extends('Layouts.template')
 @section('content')
+
+    <!-- For the dynamic meta tags -->
+@section('metaDescription')
+    'Votre panier My Little Boulangerie'
+@endsection
+@section('metaTitle')
+    'MLB - Votre panier'
+@endsection
+
+
+@section('content')
     <h2>Votre panier:</h2>
     @if(empty($productInCart))
         <p>Votre panier est vide pour l'instant</p>
