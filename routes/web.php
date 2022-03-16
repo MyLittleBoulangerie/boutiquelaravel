@@ -29,10 +29,8 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('product'
 Route::post('/products', [CartController::class, 'store'])->name('addcart'); //à terme, appellera cartController
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/moncompte', [UserController::class, 'index'])->middleware(['auth'])->name('moncompte');
+Route::post('/cart', [CartController::class, 'remove'])->name('delete');
+Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
 
-/*
-Route::prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->middleware('admin')->name('adminHome');
-});*/
 
 require __DIR__ . '/auth.php';
