@@ -51,10 +51,8 @@ class CartController extends Controller
 
     // Afficher tous les articles du panier
     public function index()
-    {
+    {/*
         $cartSession = Session::get('cart');
-
-
         $cart = [];
         (int)$totalPrice = 0;
         if (isset($cartSession)) {
@@ -67,7 +65,21 @@ class CartController extends Controller
 
         }
         return view('cart.index', ['productInCart' => $cart, 'totalPrice'=>$totalPrice]);
-        //dd($cart);
+    */
+
+
+        $cart = [];
+        (int)$totalPrice = 0;
+        foreach (Session::get('cart', []) as $id => $quantity) {
+            $item = Product::find($id);
+            $cart[] = [
+                'item' => $item,
+                'quantity' => $quantity
+            ];
+           $totalPrice += $item['price'] * $quantity;
+        }
+        return view('cart.index', ['productInCart' => $cart, 'totalPrice' => $totalPrice]);
+
     }
 
     // supprimer un article du panier
