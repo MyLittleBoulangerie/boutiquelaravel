@@ -27,7 +27,7 @@
 
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="#">Ma Boulangerie</a></li>
-                    <li class="nav-item"><a class="btn btn-light action-button" role="button" href="{{route('dashboard')}}">Sign In</a></li>
+                    <li class="nav-item"><a class="btn btn-light action-button" role="button" href="/login">Sign In</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Sign up </a></li>
                 </ul>
                 <button class="btn btn-outline-dark" role="button" href="#">
@@ -36,6 +36,15 @@
 
                     <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 </button>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-dropdown-link :href="route('logout')"
+                                     onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
+                </form>
             </div>
         </div>
     </nav>
