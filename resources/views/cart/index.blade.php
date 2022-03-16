@@ -41,5 +41,11 @@
             </ul>
         @endforeach
         <h4>Prix total: XXXX</h4>
+        <form action="{{route('validate_cart')}}" method="POST">
+            @csrf
+            <input type="hidden" name="order" value="{{'trucmuche'}}">
+            <button type="submit">Valider et passer commande</button>
+            <br/>
+        </form>
     @endif
 @endsection

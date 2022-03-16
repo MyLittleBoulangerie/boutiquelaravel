@@ -31,6 +31,6 @@ Route::post('/cart', [CartController::class, 'remove'])->name('delete');
 Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
 
 
-Route::get('/validate_order', [OrderController::class, 'store']);
+Route::post('/validate_cart', [OrderController::class, 'store']);
 require __DIR__.'/auth.php';
 
