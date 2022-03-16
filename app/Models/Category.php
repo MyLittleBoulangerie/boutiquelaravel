@@ -31,7 +31,7 @@ class Category extends Model
         ];
     }
 
-    public function meta()
+   /* public function meta()
     {
         $metadescription = self::get('description');
         $metaTitle = self::get('name');
@@ -39,7 +39,7 @@ class Category extends Model
             'metadescription'=>$metadescription,
             'metaTitle'=>$metaTitle
         ];
-    }
+    }*/
 
     public function products()
     {

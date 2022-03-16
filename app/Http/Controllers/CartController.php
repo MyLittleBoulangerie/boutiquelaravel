@@ -67,7 +67,7 @@ class CartController extends Controller
         return view('cart.index', ['productInCart' => $cart, 'totalPrice'=>$totalPrice]);
     */
 
-
+        // tentative de refactorisation:
         $cart = [];
         (int)$totalPrice = 0;
         foreach (Session::get('cart', []) as $id => $quantity) {
@@ -76,7 +76,7 @@ class CartController extends Controller
                 'item' => $item,
                 'quantity' => $quantity
             ];
-           $totalPrice += $item['price'] * $quantity;
+            $totalPrice += $item['price'] * $quantity;
         }
         return view('cart.index', ['productInCart' => $cart, 'totalPrice' => $totalPrice]);
 
