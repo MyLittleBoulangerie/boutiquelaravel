@@ -34,7 +34,7 @@
                     <i class="bi-cart-fill me-1"></i>
                     <a class="nav-link" href="{{route('cart')}}">Panier</a>
 
-                    <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    <span class="badge bg-dark text-white ms-1 rounded-pill">{{Session::get('totalQte')}}</span>
                 </button>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

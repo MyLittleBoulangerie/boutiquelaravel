@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $home = Category::all();
-        return view('home', ['home'=>$home]);
+        return view('home', ['home' => $home]);
     }
 
     /**
@@ -37,6 +37,7 @@ class HomeController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
@@ -47,7 +48,7 @@ class HomeController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
     }
 
     /**
