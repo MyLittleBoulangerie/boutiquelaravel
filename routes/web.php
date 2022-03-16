@@ -28,9 +28,16 @@ Route::get('/products/category/{id}', [ProductController::class, 'categoryIndex'
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
 Route::post('/products', [CartController::class, 'store'])->name('addcart'); //à terme, appellera cartController
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::get('/moncompte', [UserController::class, 'index'])->middleware(['auth'])->name('moncompte');
 Route::post('/cart', [CartController::class, 'remove'])->name('delete');
 Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
+
+Route::get('/moncompte', [UserController::class, 'index'])->middleware(['auth'])->name('moncompte');
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 
 require __DIR__ . '/auth.php';
