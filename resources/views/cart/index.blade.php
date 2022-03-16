@@ -1,7 +1,6 @@
 @extends('Layouts.template')
-@section('content')
 
-    <!-- For the dynamic meta tags -->
+<!-- For the dynamic meta tags -->
 @section('metaDescription')
     'Votre panier My Little Boulangerie'
 @endsection
