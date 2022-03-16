@@ -1,4 +1,15 @@
 @extends('Layouts.template')
+
+<!-- For the dynamic meta tags -->
+@section('metaDescription')
+    {{$product->description}}
+@endsection
+@section('metaTitle')
+    {{$product->name}}
+@endsection
+
+
+<!-- For the content itself -->
 @section('content')
     <h2>{{$product->name}}</h2>
 
@@ -6,7 +17,7 @@
         <img src="ressources/photos/{{$product->name}}.jpg" alt="Photo de {{$product->name}}">
 
         <h4>Disponible uniquement en magasin et Click & Collect</h4>
-        <p>Descriptif du produit: {{$product->description}}</p>
+        <p>{{$product->description}}</p>
         <p>prix: {{$product->price}}€</p>
         <label for="quantity">quantité:</label>
         <form action="{{route('addcart')}}" method="POST">
@@ -19,5 +30,4 @@
             <br/>
         </form>
     </div>
-
 @endsection

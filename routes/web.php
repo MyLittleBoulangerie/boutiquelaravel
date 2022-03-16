@@ -22,11 +22,14 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/', [HomeController::class , 'index'])->name('home');
+Route::get('/', [HomeController::class , 'index','store'])->name('home');
 Route::get('/products/category/{id}', [ProductController::class, 'categoryIndex'])->name('category');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
-Route::post('/products', [CartController::class, 'store'])->name('addcart'); //à terme, appellera cartController
+Route::post('/products', [CartController::class, 'store'])->name('addcart');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/cart', [CartController::class, 'remove'])->name('delete');
+Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
+
 
 Route::get('/validate_order', [OrderController::class, 'index']);
 require __DIR__.'/auth.php';
