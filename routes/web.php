@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +19,12 @@ use App\Http\Controllers\CartController;
 */
 
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/', [HomeController::class , 'index','store'])->name('home');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products/category/{id}', [ProductController::class, 'categoryIndex'])->name('category');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
 Route::post('/products', [CartController::class, 'store'])->name('addcart');
@@ -30,5 +32,13 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'remove'])->name('delete');
 Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
 
+Route::get('/moncompte', [UserController::class, 'index'])->middleware(['auth'])->name('moncompte');
 
-require __DIR__.'/auth.php';
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+
+require __DIR__ . '/auth.php';
