@@ -31,17 +31,7 @@ class Category extends Model
         ];
     }
 
-    public function meta()
-    {
-        $metadescription = self::get('description');
-        $metaTitle = self::get('name');
-        return [
-            'metadescription'=>$metadescription,
-            'metaTitle'=>$metaTitle
-        ];
-    }
-
-    public function hasProducts()
+    public function products()
     {
         return $this->hasMany(Product::Class);
     }

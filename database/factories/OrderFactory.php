@@ -17,10 +17,7 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'number' => $this->faker->randomNumber(),
             'created_at' => $this->faker->dateTime,
-            'delivery_type' => $this->faker->sentence,
-
         ];
     }
 }

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -14,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order');
+
     }
 
     /**
@@ -35,8 +37,20 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $cart = [];
+        $totalPrice = 0;
+        foreach (Session::get('cart', []) as $id => $quantity) {
+            $item = Product::find($id);
+            $cart[] = [
+                'product' => $item,
+                'quantity' => $quantity
+            ];
+            $totalPrice += $item['price'] * $quantity;
+
+            $cart->save();
+
+        }
+        return view('order',['cart_validate'=>$cart, 'totalprice'=>$totalPrice]); }
 
     /**
      * Display the specified resource.
@@ -81,5 +95,10 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
+    }
+
+    public function addData (Request $request)
+    {
+
     }
 }

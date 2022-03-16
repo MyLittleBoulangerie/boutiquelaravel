@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('number');
             $table->timestamps();
             $table->char('delivery_type', 45)->default('Click&Collect');
         });

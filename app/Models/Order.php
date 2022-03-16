@@ -9,20 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
-    /*public static function prixTotalProduits($quantity, $price)
+    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        $totalPrice = $quantity * $price;
-        return $totalPrice;
+        return $this->belongsToMany(Product::class,'product_has_order');
     }
-
-    public static function prixTotalCommande()
-    {
-        $totalPriceProduct = self::prixTotalProduits();
-
-        $orderTotalPrice = $totalPriceProduct + $totalPriceProduct /*...*/
-        /*;
-
-        return $orderTotalPrice;
-
-    }*/
 }

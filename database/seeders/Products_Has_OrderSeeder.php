@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Database\Factories\Products_Has_OrderFactory;
+use App\Models\Products_Has_Order;
 
 class Products_Has_OrderSeeder extends Seeder
 {
@@ -15,6 +18,6 @@ class Products_Has_OrderSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Products_Has_Order::factory(5)->create();
+        Products_Has_Order::factory(5)->create();
     }
 }
