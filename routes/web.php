@@ -30,4 +30,5 @@ Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/cart', [CartController::class, 'remove'])->name('delete');
 Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
 
+
 require __DIR__.'/auth.php';
