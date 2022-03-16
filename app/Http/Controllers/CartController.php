@@ -56,8 +56,8 @@ class CartController extends Controller
 
 
         $cart = [];
+        (int)$totalPrice = 0;
         if (isset($cartSession)) {
-            (int)$totalPrice = 0;
             foreach ($cartSession as $id => $quantity) {
                 $item = Product::find($id);
                 $product = ['item' => $item, 'quantity' => $quantity];
