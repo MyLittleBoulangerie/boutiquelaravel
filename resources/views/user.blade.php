@@ -1,4 +1,4 @@
-@extends('Layouts.template')
+@extends('layouts.template')
 @section('content')
     <div class="container-fluid">
         <div class="row">

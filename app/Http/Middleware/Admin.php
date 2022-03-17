@@ -18,8 +18,6 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
 
-        $request->session()->regenerate();
-
         $user = $request->user();
         if ($user->is_admin == 0) {
             return redirect()->intended(RouteServiceProvider::HOME);

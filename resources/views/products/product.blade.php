@@ -1,4 +1,4 @@
-@extends('Layouts.template')
+@extends('layouts.template')
 
 <!-- For the dynamic meta tags -->
 @section('metaDescription')
