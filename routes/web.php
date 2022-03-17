@@ -41,7 +41,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     })->name('dashboard');
     Route::get('/admin/products', [AdminController::class, 'index'])->name('adminproducts');
     Route::get('/admin/products/create', [AdminController::class, 'create'])->name('adminproductcreate');
-    Route::post('/admin/products/create/store', [AdminController::class, 'store'])->name('adminproductstore');
+    Route::post('/admin/products/store', [AdminController::class, 'store'])->name('adminproductstore');
     Route::get('/admin/products/{product}/edit', [AdminController::class, 'edit'])->name('adminproductedit');
     Route::put('/admin/products/{id}', [AdminController::class, 'update'])->name('adminproductupdate');
 });
