@@ -11,6 +11,40 @@ use phpDocumentor\Reflection\Types\ArrayKey;
 class CartController extends Controller
 
 {
+
+    // Afficher tous les articles du panier
+    public function index()
+    {
+//        $cartSession = Session::get('cart');
+//
+//
+//        $cart = [];
+//
+//        if (isset($cartSession)) {
+//            foreach ($cartSession as $id => $quantity) {
+//                $item = Product::find($id);
+//                $product = ['item' => $item, 'quantity' => $quantity];
+//                array_push($cart, $product);
+//            }
+//        }
+
+        // REFACTORISATION DE la fonction index
+        $totalPrice = 0 ;
+       $cart = [];
+        foreach (Session::get('cart',[]) as $id => $quantity){
+          $item = Product::find($id);
+            $cart[]= [
+                'item' => $item,
+                'quantity' => $quantity,
+            ];
+            //fin refactorisation
+
+          $totalPrice += $item['price'] * $quantity ;
+            }
+
+        return view('cart.index', ['productInCart' => $cart, 'totalCart'=>$totalPrice]);
+    }
+
     // Placer des produits en session
     public function store(Request $request)
     {
@@ -49,10 +83,10 @@ class CartController extends Controller
         $cart = $request->session()->get('cart', []);
         $totalProduct = $request->session()->get('totalQte');
 
-        $cart[$product_id] = $quantity;
-        foreach ($cart as $item) {
-         //   $item += $item;
-        }
+//        $cart[$product_id] = $quantity;
+//        foreach ($cart as $item) {
+//         //   $item += $item;
+//        }
 
         $totalProduct = $cart[$product_id];
 
@@ -62,31 +96,6 @@ class CartController extends Controller
 
     }
 
-    // Afficher tous les articles du panier
-    public function index()
-    {
-//        $cartSession = Session::get('cart');
-//
-//
-//        $cart = [];
-//
-//        if (isset($cartSession)) {
-//            foreach ($cartSession as $id => $quantity) {
-//                $item = Product::find($id);
-//                $product = ['item' => $item, 'quantity' => $quantity];
-//                array_push($cart, $product);
-//            }
-//        }
-        $cart = [];
-        foreach (Session::get('cart',[]) as $id => $quantity){
-            $cart[]= [
-                'item' => Product::find($id),
-                'quantity' => $quantity
-            ];
-        }
-
-        return view('cart.index', ['productInCart' => $cart]);
-    }
 
     public function remove(Request $request)
     {

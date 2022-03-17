@@ -38,7 +38,7 @@
                 </li>
             </ul>
         @endforeach
-        <h4>Prix total: XXXX</h4>
+        <h4>Prix total: {{$totalCart}}</h4>
     @endif
 
 @endsection
