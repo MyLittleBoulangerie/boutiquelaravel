@@ -26,7 +26,8 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $order = new Order();
+        $order->save();
     }
 
     /**
@@ -47,7 +48,7 @@ class OrderController extends Controller
             ];
             $totalPrice += $item['price'] * $quantity;
 
-            $cart->save();
+            //$cart->save();
 
         }
         return view('order',['cart_validate'=>$cart, 'totalprice'=>$totalPrice]); }

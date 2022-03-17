@@ -9,8 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
-    public function products(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function products()
     {
-        return $this->belongsToMany(Product::class,'product_has_order');
+        return $this->belongsToMany(Product::class);
     }
 }
