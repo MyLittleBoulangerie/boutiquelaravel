@@ -32,7 +32,7 @@
                         <button type="submit">Modifier</button>
                     </form>
 
-                    <form action="{{route('delete')}}" method="POST">
+                    <form action="{{route('remove')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$product['item']['id']}}">
                         <button type="submit" >Supprimer</button>
@@ -42,5 +42,10 @@
             </ul>
         @endforeach
         <h4>Prix total: {{$totalPrice}}</h4>
+
+        <form action="{{route('deletecart')}}" method="POST">
+            @csrf
+            <button type="submit">Annuler mon panier</button>
+        </form>
     @endif
 @endsection

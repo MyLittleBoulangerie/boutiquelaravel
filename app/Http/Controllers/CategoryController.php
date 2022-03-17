@@ -13,7 +13,7 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Category $category)
+    public function index(Category $category) //fixme eloquent-relationships#eager-loading
     {
         $products = $category->products;
         return view('products.index', ['products' => $products, 'category'=>$category]);

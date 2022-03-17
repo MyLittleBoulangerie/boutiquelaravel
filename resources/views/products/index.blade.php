@@ -30,7 +30,7 @@
                 <input type="hidden" name="product_id" value="{{$product->id}}">
                 <input type="number" value="1" name="quantity">
                 <div>stock disponible: {{$product->stock}}</div>
-                <a  href="{{route('product', $product->id)}}">Voir le produit</a>
+                <a href="{{route('product', $product->id)}}">Voir le produit</a>
                 <button type="submit"> Ajouter au panier</button>
                 <br/>
             </form>
