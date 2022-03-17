@@ -26,8 +26,8 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'price' => 'required|digits_between:0,999.99',
-            'stock' => 'required|digits:3|min:0',
+            'price' => 'required|digits_between:0,6',
+            'stock' => 'required|digits_between:0,3',
             'category_id' => 'required|digits_between:1,3',
         ];
     }
