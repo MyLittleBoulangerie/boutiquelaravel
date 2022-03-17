@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/admin/products', [AdminController::class, 'index'])->name('adminproducts');
+    Route::get('/admin/products/create', [AdminController::class, 'create'])->name('adminproductcreate');
+    Route::post('/admin/products/create/store', [AdminController::class, 'store'])->name('adminproductstore');
 });
 
 
