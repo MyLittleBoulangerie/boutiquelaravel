@@ -40,7 +40,3 @@
     <p>A Bien était validée par nos services. </p><br/>
     <p>Vous pourrez venir régler et récupérer votre commande en boutique à partir de demain 9h00.</p>
 @endsection
-<?php /*{{\App\Models\Order::prixTotalProduits(1,5)}}
-{{\App\Models\Order::prixTotalProduits(2,3)}}
-{{\App\Models\Order::prixTotalProduits(2,6)}}
-{{\App\Models\Order::prixTotalCommande()}}*/?>
