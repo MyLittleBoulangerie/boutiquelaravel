@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use phpDocumentor\Reflection\Types\ArrayKey;
 
 class CartController extends Controller
 
@@ -20,6 +21,7 @@ class CartController extends Controller
         // $cart = $_SESSION['cart']
         $cart = $request->session()->get('cart', []);
 
+
         // Debut logique d'ajout
         if (array_key_exists($product_id, $cart)) {
             $cart[$product_id] += $quantity;
@@ -27,10 +29,14 @@ class CartController extends Controller
             $cart[$product_id] = $quantity;
         }
 
+        $totalProduct = 0;
+        foreach ($cart as $key => $value) {
+            $totalProduct += $value;
+        }
+        $request->session()->put('totalQte', $totalProduct);
         // Fin
         $request->session()->put('cart', $cart);
         return redirect()->back();
-
     }
 
     // Modifier la quantité d'un produit depuis le panier
@@ -41,17 +47,25 @@ class CartController extends Controller
         (int)$quantity = $request->input('quantity');
 
         $cart = $request->session()->get('cart', []);
+        $totalProduct = $request->session()->get('totalQte');
 
         $cart[$product_id] = $quantity;
+        foreach ($cart as $item) {
+         //   $item += $item;
+        }
 
+        $totalProduct = $cart[$product_id];
+
+        $request->session()->put('totalQte', $totalProduct);
         $request->session()->put('cart', $cart);
-        return redirect()->route('cart');
+        return redirect()->back();
 
     }
 
     // Afficher tous les articles du panier
     public function index()
     {
+
         $cart = [];
         (int)$totalPrice = 0;
         foreach (Session::get('cart', []) as $id => $quantity) {
@@ -63,10 +77,8 @@ class CartController extends Controller
             $totalPrice += $item['price'] * $quantity;
         }
         return view('cart.index', ['productInCart' => $cart, 'totalPrice' => $totalPrice]);
-
     }
 
-    // supprimer un article du panier
     public function remove(Request $request)
     {
         $id = $request->input('id');
@@ -74,5 +86,6 @@ class CartController extends Controller
         unset($cart[$id]);
         $request->session()->put('cart', $cart);
         return redirect()->back();
+
     }
 }
