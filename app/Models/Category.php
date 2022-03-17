@@ -32,7 +32,7 @@ class Category extends Model
     }
 
 
-    public function Products()
+    public function Products() // fixme p minuscule comme toute methode
     {
         return $this->hasMany(Product::Class);
     }
