@@ -85,7 +85,6 @@ class CartController extends Controller
 
     public function delete(Request $request)
     {
-        $cart = $request->session()->get('cart');
         $cart=[];
         $request->session()->put('cart', $cart);
         return redirect()->back();
