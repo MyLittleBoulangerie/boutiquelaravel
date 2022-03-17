@@ -12,6 +12,7 @@
             <img src="ressources/photos/{{$product->name}}.jpg" alt="Photo de {{$product->name}}">
             <h3>{{$product->name}}</h3>
             <p>{{$product->description}}</p>
+            <a class="btn btn-secondary" href="{{route('adminproductedit', $product)}}">Modifier le produit</a>
         </div>
     @endforeach
 @endsection
