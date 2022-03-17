@@ -3,11 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Category;
-use App\Models\Products_Has_Order;
+use App\Models\_OrderProduct;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Products_Has_Order>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\_OrderProduct>
  */
 class Products_Has_OrderFactory extends Factory
 {

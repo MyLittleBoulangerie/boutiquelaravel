@@ -35,22 +35,22 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Order $order, Request $request)
     {
-        $cart = [];
-        $totalPrice = 0;
-        foreach (Session::get('cart', []) as $id => $quantity) {
-            $item = Product::find($id);
-            $cart[] = [
-                'product' => $item,
-                'quantity' => $quantity
-            ];
-            $totalPrice += $item['price'] * $quantity;
+        $orderProducts[]=$request->input([
+            'productId'=>'product_id',
+            'productQuantity'=>'quantity'
+            ]);
+        $orderTotalPrice=$request->input('total_price');
+        $order-> total_price =$orderTotalPrice;
+        $order->save();
+        dd($order);
 
-            $cart->save();
-
-        }
-        return view('order',['cart_validate'=>$cart, 'totalprice'=>$totalPrice]); }
+        // déclencher un seeder -> création d'une nouvelle commande
+        // Requêter l'id de la nouvelle commande
+        // renvoyer l'id et le récapitulatif à la vue
+        return view('order_info',['products'=>$products, 'totalPrice'=>$totalPrice]);
+    }
 
     /**
      * Display the specified resource.

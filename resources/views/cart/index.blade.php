@@ -28,23 +28,24 @@
                         @csrf
                         <label>quantité:</label>
                         <input type="hidden" name="product_id" value="{{$product['item']['id']}}">
-                        <input type="number" min="1" max="{{$product['item']['stock']}}" name="quantity" value="{{$product['quantity']}}">
+                        <input type="number" min="1" max="{{$product['item']['stock']}}" name="quantity"
+                               value="{{$product['quantity']}}">
                         <button type="submit">Modifier</button>
                     </form>
 
                     <form action="{{route('delete')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$product['item']['id']}}">
-                        <button type="submit" >Supprimer</button>
+                        <button type="submit">Supprimer</button>
                         <br/>
                     </form>
                 </li>
             </ul>
         @endforeach
         <h4>Prix total: {{$totalPrice}}</h4>
-        <form action="" method="POST">
+        <form action="{{route('order')}}" method="POST">
             @csrf
-            <input type="hidden" name="order" value="">
+            <input type="hidden" name="total_price" value="{{$totalPrice}}">
             <button type="submit">Valider et passer commande</button>
             <br/>
         </form>

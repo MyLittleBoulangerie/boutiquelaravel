@@ -15,6 +15,8 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        Order::factory(5)->create();
+        DB::table('orders')->insert([
+
+        ]);
     }
 }

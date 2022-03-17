@@ -3,13 +3,13 @@
 namespace Database\Seeders;
 
 
+use App\Models\Order_Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 use Database\Factories\Products_Has_OrderFactory;
-use App\Models\Products_Has_Order;
 
-class Products_Has_OrderSeeder extends Seeder
+class Order_ProductSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,6 +18,6 @@ class Products_Has_OrderSeeder extends Seeder
      */
     public function run()
     {
-        Products_Has_Order::factory(5)->create();
+        Order_Product::factory(5)->create();
     }
 }
