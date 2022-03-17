@@ -60,7 +60,8 @@ class OrderController extends Controller
                 $order->products()->attach($productId, ['quantity' => $quantity]);
                 $totalPrice += $order->price * $quantity;
             }
-            $request->session()->put('cart', []);
+            //$request->session()->put('cart', []);
+            //dd($order->products->pivot->quantity);
 
             return view('order', ['order' => $order, 'totalprice' => $totalPrice]);
         }

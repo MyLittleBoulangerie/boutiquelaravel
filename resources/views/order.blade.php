@@ -1,5 +1,6 @@
 @extends('Layouts.template')
 @section('validate_order')
+    {{xdebug_var_dump($order->products)}}
     <h1>Commande Validée !</h1>
     <p>Votre commande N° {{$order->id}} contenant <br/></p>
     <table class="table">
@@ -32,7 +33,7 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{}} €</td>
+            <td>{{$totalprice}} €</td>
         </tr>
         </tbody>
     </table><br/>
