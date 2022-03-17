@@ -18,14 +18,17 @@
         <label for="price">Prix de vente Hors Taxes :</label>
         <input type="text" name="price"><br>
 
+        <label for="stock">Quantité en stock :</label>
+        <input type="text" name="stock"><br>
+
         <p>Merci d'attribuer la catégorie de ce produit :</p>
-        <input type="radio" id="pain" name="productCategory" value="Pain">
+        <input type="radio" id="pain" name="category_id" value="1">
         <label for="pain">Pain</label><br>
 
-        <input type="radio" id="viennoiserie" name="productCategory" value="Viennoiserie">
+        <input type="radio" id="viennoiserie" name="category_id" value="2">
         <label for="Viennoiserie">Viennoiserie</label><br>
 
-        <input type="radio" name="productCategory" value="Patisserie">
+        <input type="radio" id="patisserie" name="category_id" value="3">
         <label for="patisserie">Patisserie</label><br>
 
         <input type="submit" value="Submit">

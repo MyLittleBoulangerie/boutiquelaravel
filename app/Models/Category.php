@@ -31,17 +31,8 @@ class Category extends Model
         ];
     }
 
-    public function meta()
-    {
-        $metadescription = self::get('description');
-        $metaTitle = self::get('name');
-        return [
-            'metadescription'=>$metadescription,
-            'metaTitle'=>$metaTitle
-        ];
-    }
 
-    public function Products()
+    public function Products() // fixme p minuscule comme toute methode
     {
         return $this->hasMany(Product::Class);
     }

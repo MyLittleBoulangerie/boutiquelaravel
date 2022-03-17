@@ -29,9 +29,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products/category/{category}', [CategoryController::class, 'index'])->name('category');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
 Route::post('/products', [CartController::class, 'store'])->name('addcart');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::post('/cart', [CartController::class, 'remove'])->name('delete');
-Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
+Route::post('/cart', [CartController::class, 'update'])->name('updatecart');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('remove');
+Route::post('/cart/delete', [CartController::class, 'delete'])->name('deletecart');
 
 Route::get('/moncompte', [UserController::class, 'index'])->middleware(['auth'])->name('moncompte');
 
@@ -41,7 +43,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     })->name('dashboard');
     Route::get('/admin/products', [AdminController::class, 'index'])->name('adminproducts');
     Route::get('/admin/products/create', [AdminController::class, 'create'])->name('adminproductcreate');
-    Route::post('/admin/products/create/store', [AdminController::class, 'store'])->name('adminproductstore');
+    Route::post('/admin/products/store', [AdminController::class, 'store'])->name('adminproductstore');
     Route::get('/admin/products/{product}/edit', [AdminController::class, 'edit'])->name('adminproductedit');
     Route::put('/admin/products/{product}', [AdminController::class, 'update'])->name('adminproductupdate');
 });

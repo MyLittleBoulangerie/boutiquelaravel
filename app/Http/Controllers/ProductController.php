@@ -14,9 +14,8 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Product $products)
     {
-        $products = Product::all();
         return view('products.index', ['products' => $products]);
     }
 
@@ -47,10 +46,9 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Product $product)
     {
-        $productId = Request('id');
-        $product = Product::find($productId);
+        // Laravel interrogera l'id par défaut sur le model Product
         return view('products.product', ['product' => $product]);
     }
 

@@ -20,16 +20,17 @@
                          alt="Photo de {{$product['item']['name']}}">
                     <h3>{{$product['item']['name']}}</h3>
                     <p>{{$product['item']['description']}}</p>
-                    <p>prix: {{$product['item']['price']}}€</p>
+                    <p>prix unitaire: {{$product['item']['price']}}€</p>
+                    <p>prix: {{$product['item']['price']*$product['quantity']}}€</p>
                     <form action="{{route('updatecart')}}" method="POST">
                         @csrf
                         <label>quantité:</label>
                         <input type="hidden" name="product_id" value="{{$product['item']['id']}}">
-                        <input type="number" name="quantity" value="{{$product['quantity']}}">
+                        <input type="number" min="1" max="{{$product['item']['stock']}}" name="quantity" value="{{$product['quantity']}}">
                         <button type="submit">Modifier</button>
                     </form>
 
-                    <form action="{{route('delete')}}" method="POST">
+                    <form action="{{route('remove')}}" method="POST">
                         @csrf
                         <input type="hidden" name="id" value="{{$product['item']['id']}}">
                         <button type="submit" >Supprimer</button>
@@ -38,7 +39,12 @@
                 </li>
             </ul>
         @endforeach
-        <h4>Prix total: XXXX</h4>
+        <h4>Prix total: {{$totalPrice}}</h4>
+
+        <form action="{{route('deletecart')}}" method="POST">
+            @csrf
+            <button type="submit">Annuler mon panier</button>
+        </form>
     @endif
 
 @endsection

@@ -16,8 +16,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        return view('admin.products.index', ['products' => $products]);
+        $products = Product::all();  // Retrieve all products
+        return view('admin.products.index', ['products' => $products]); // view filled with all products returned
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.products.create'); //fixme
+        return view('admin.products.create'); // form view returned
     }
 
     /**
@@ -38,7 +38,22 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        return view('admin.products.store'); //fixme
+        //todo Validate the request...
+
+        //Generate an instance of Product from Models into $newItem
+        $newItem = new Product;
+        // the form input value related in the $request is affected to teh related attribute of $newItem
+        $newItem->name = $request->name;
+        $newItem->description = $request->description;
+        $newItem->price = $request->price;
+        $newItem->stock = $request->stock;
+        $newItem->category_id = $request->category_id;
+//dd($newItem);
+        //Save method from Model.php manage the insert to the DB
+        $newItem->save();
+
+        //Then redirect user to the all product view to see the new entry in the list
+        return redirect()->route('adminproducts');
     }
 
     /**
