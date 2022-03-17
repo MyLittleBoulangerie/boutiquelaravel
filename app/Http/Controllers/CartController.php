@@ -51,23 +51,7 @@ class CartController extends Controller
 
     // Afficher tous les articles du panier
     public function index()
-    {/*
-        $cartSession = Session::get('cart');
-        $cart = [];
-        (int)$totalPrice = 0;
-        if (isset($cartSession)) {
-            foreach ($cartSession as $id => $quantity) {
-                $item = Product::find($id);
-                $product = ['item' => $item, 'quantity' => $quantity];
-                $totalPrice += $item['price']*$quantity;
-                array_push($cart, $product);
-            }
-
-        }
-        return view('cart.index', ['productInCart' => $cart, 'totalPrice'=>$totalPrice]);
-    */
-
-        // tentative de refactorisation:
+    {
         $cart = [];
         (int)$totalPrice = 0;
         foreach (Session::get('cart', []) as $id => $quantity) {
