@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.products.create'); //fixme
     }
 
     /**
@@ -37,7 +37,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('admin.products.store'); //fixme
     }
 
     /**
