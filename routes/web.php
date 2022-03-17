@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
 
 /*
@@ -25,7 +26,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/products/category/{id}', [ProductController::class, 'categoryIndex'])->name('category');
+Route::get('/products/category/{category}', [CategoryController::class, 'index'])->name('category');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('product');
 Route::post('/products', [CartController::class, 'store'])->name('addcart');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
