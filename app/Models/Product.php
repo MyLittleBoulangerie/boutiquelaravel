@@ -9,7 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    public int $quantity;
+
+    public $timestamps = false;
 
     public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
