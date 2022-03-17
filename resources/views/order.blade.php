@@ -1,7 +1,7 @@
 @extends('Layouts.template')
 @section('validate_order')
     <h1>Commande Validée !</h1>
-    <p>Votre commande N° *** contenant <br/></p>
+    <p>Votre commande N° {{$order->id}} contenant <br/></p>
     <table class="table">
         <thead>
         <tr>
@@ -12,12 +12,12 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($cart_validate as $product):
+        @foreach($order->products as $product):
         <tr>
-            <td>{{$product['product']['name']}}</td>
-            <td>{{$product['quantity']}}</td>
-            <td>{{$product['product']['price']}}€</td>
-            <td>{{$product['quantity'] * $product['product']['price']}}</td>
+            <td>{{$product->name}}</td>
+            <td>{{$product->pivot->quantity}}</td>
+            <td>{{$product->price}}€</td>
+            <td>{{$product->pivot->quantity * $product->price}}</td>
 
         </tr>
         @endforeach
@@ -32,7 +32,7 @@
         </thead>
         <tbody>
         <tr>
-            <td> {{$totalprice}}€</td>
+            <td>{{}} €</td>
         </tr>
         </tbody>
     </table><br/>

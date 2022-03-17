@@ -16,7 +16,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-
+        //
     }
 
     /**
@@ -26,37 +26,49 @@ class OrderController extends Controller
      */
     public function create()
     {
-        $order = new Order();
-        $order->save();
+        $cart = [];
+        $totalPrice = 0;
+        foreach (Session::get('cart', []) as $id => $quantity) {
+            $product = Product::find($id);
+            $cart[] = [
+                'product' => $product,
+                'quantity' => $quantity
+            ];
+            $totalPrice += $product->price * $quantity;
+        }
+
+        return view('order', ['cart_validate' => $cart, 'totalprice' => $totalPrice]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $cart = [];
-        $totalPrice = 0;
-        foreach (Session::get('cart', []) as $id => $quantity) {
-            $item = Product::find($id);
-            $cart[] = [
-                'product' => $item,
-                'quantity' => $quantity
-            ];
-            $totalPrice += $item['price'] * $quantity;
+        $session = Session::get('cart', []);
+        if (empty($session)) {
+            echo "Votre panier est vide";
+        } else {
 
-            //$cart->save();
-
+            $order = new Order();
+            $order->save();
+            $totalPrice = 0;
+            foreach ($session as $productId => $quantity) {
+                $order->products()->attach($productId, ['quantity' => $quantity]);
+            }
+            $request->session()->put('cart', []);
+            $totalPrice += $order->price * $quantity;
+            return view('order', ['order' => $order, 'totalprice' => $totalPrice]);
         }
-        return view('order',['cart_validate'=>$cart, 'totalprice'=>$totalPrice]); }
+    }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param \App\Models\Order $order
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
@@ -67,7 +79,7 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param \App\Models\Order $order
      * @return \Illuminate\Http\Response
      */
     public function edit(Order $order)
@@ -78,8 +90,8 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Order  $order
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Order $order
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Order $order)
@@ -90,7 +102,7 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param \App\Models\Order $order
      * @return \Illuminate\Http\Response
      */
     public function destroy(Order $order)
@@ -98,7 +110,7 @@ class OrderController extends Controller
         //
     }
 
-    public function addData (Request $request)
+    public function addData(Request $request)
     {
 
     }
