@@ -90,12 +90,13 @@ class AdminController extends Controller
         // Retrieve the validated input data...
         //$validated = $request->validated();
 
-        $product->name = $request->name;
+       // $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
         $product->category_id = $request->category_id;
 
+        $product->name = urldecode($request->name);
         $product->save();
 
         return redirect(route('adminproducts'));
