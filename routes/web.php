@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -31,9 +32,15 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('product'
 Route::post('/products', [CartController::class, 'store'])->name('addcart');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+
+Route::post('/cart', [CartController::class, 'remove'])->name('delete');
+Route::post('/updatecart', [CartController::class, 'updatecart'])->name('updatecart');
+Route::get('/validate_order', [OrderController::class, 'store']);
+
 Route::post('/cart', [CartController::class, 'update'])->name('updatecart');
 Route::post('/cart/remove', [CartController::class, 'remove'])->name('remove');
 Route::post('/cart/delete', [CartController::class, 'delete'])->name('deletecart');
+
 
 Route::get('/moncompte', [UserController::class, 'index'])->middleware(['auth'])->name('moncompte');
 
@@ -50,3 +57,4 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 
 require __DIR__ . '/auth.php';
+

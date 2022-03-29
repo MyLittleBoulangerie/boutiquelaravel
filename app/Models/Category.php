@@ -31,10 +31,12 @@ class Category extends Model
         ];
     }
 
-
+    /**
+     * Create the relationship with Products
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function Products() // fixme p minuscule comme toute methode
     {
         return $this->hasMany(Product::Class);
     }
 }
-
