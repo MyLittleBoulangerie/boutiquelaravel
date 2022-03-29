@@ -1,24 +1,23 @@
 <?php
 
-
 namespace Database\Seeders;
+
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
-use App\Models\Category;
+use Database\Factories\Products_Has_OrderFactory;
+use App\Models\Products_Has_Order;
 
-
-class CategoriesSeeder extends Seeder
+class Products_Has_OrderSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        \App\Models\Category::factory(3)->hasProducts(6)->create();
-
+        Products_Has_Order::factory(5)->create();
     }
 }

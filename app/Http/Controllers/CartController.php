@@ -72,13 +72,14 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-
     public function remove(Request $request)
     {
         $id = $request->input('id');
         $cart = $request->session()->get('cart');
+
         unset($cart[$id]);
         $request->session()->put('cart', $cart);
+
         return redirect()->back();
 
     }

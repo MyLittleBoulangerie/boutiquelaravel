@@ -15,4 +15,8 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function order(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsToMany(Order::class,'product_has_order');
+    }
 }

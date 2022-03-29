@@ -11,9 +11,11 @@
 
 @section('content')
     <h2>Votre panier:</h2>
+
     @if(empty($productInCart))
         <p>Votre panier est vide pour l'instant</p>
     @else
+
         @foreach($productInCart as $product)
             <ul>
                 <li><img src="ressources/photos/{{$product['item']['name']}}.jpg"
@@ -46,5 +48,4 @@
             <button type="submit">Annuler mon panier</button>
         </form>
     @endif
-
 @endsection
