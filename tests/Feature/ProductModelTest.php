@@ -60,7 +60,7 @@ class ProductModelTest extends TestCase
         // Create a model instance and store it in database
         $product = Product::factory()
             ->create();
-        // Check the data base for the instance 
+        // Check the data base for the instance
         $this->assertModelExists($product);
     }
 
@@ -89,7 +89,7 @@ class ProductModelTest extends TestCase
             ->make();
         $product->name = $this->faker->text(254); // under  max varchar
         $product->stock = 65535 - 1; //under max unsigned smallint
-        $product->price = $this->faker->numberBetween(100000, 10000000); // over the default value
+        $product->price = $this->faker->randomFloat(2, 0,999.99); // over the default value
         $product->save();
 
         //check the number of products in data base
