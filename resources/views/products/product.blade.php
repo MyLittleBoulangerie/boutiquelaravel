@@ -14,7 +14,7 @@
     <h2>{{$product->name}}</h2>
 
     <div>
-        <img src="ressources/photos/{{$product->name}}.jpg" alt="Photo de {{$product->name}}">
+        <img src="ressources/img/{{$product->id}}.jpg" alt="Photo de {{$product->name}}">
 
         <h4>Disponible uniquement en magasin et Click & Collect</h4>
         <p>{{$product->description}}</p>

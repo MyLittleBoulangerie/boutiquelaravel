@@ -18,8 +18,9 @@
                 </div>
                 <div class="col-md-6">
                     <h1> {{$categorie->name}} </h1>
+                    <img src="{{asset('storage/img/'.$categorie->name.'.jpg')}}">
                     <p> {{$categorie->description}} </p>
-                    <button class="btn btn-primary" type="button">Button</button>
+                    <button class="btn btn-primary" type="button">{{$categorie->name}}</button>
                 </div>
             @endforeach
         </div>

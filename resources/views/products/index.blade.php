@@ -20,7 +20,7 @@
 
     @foreach($products as $product)
         <div>
-            <img src="ressources/photos/{{$product->name}}.jpg" alt="Photo de {{$product->name}}">
+            <img src="{{asset('storage/img/'.$product->id.'.jpg')}}">
             <h3>{{$product->name}}</h3>
             <p>{{$product->description}}</p>
             <p>prix: {{$product->price}}€</p>
